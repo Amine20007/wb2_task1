@@ -1,0 +1,28 @@
+ALGORITHM SumOfDistinctElements
+VAR
+  set1: ARRAY
+  set2: ARRAY
+  distinctElements: ARRAY
+  sum: INTEGER := 0
+
+BEGIN
+  set1 := [3, 1, 7, 9]
+  set2 := [2, 4, 1, 9, 3]
+
+  FOR each element IN set1
+    IF element NOT IN set2 AND element NOT IN distinctElements THEN
+      sum := sum + element
+      distinctElements := distinctElements + [element]
+    END_IF
+  END_FOR
+
+  FOR each element IN set2
+    IF element NOT IN set1 AND element NOT IN distinctElements THEN
+      sum := sum + element
+      distinctElements := distinctElements + [element]
+    END_IF
+  END_FOR
+
+  WRITE "Sum of distinct elements: ", sum
+
+END

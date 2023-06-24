@@ -1,0 +1,33 @@
+ALGORITHM sentence
+VAR
+  sentence: STRING
+  numWords: INTEGER := 0
+  numVowels: INTEGER := 0
+  numCharacters: INTEGER := 0
+  character: CHARACTER
+
+BEGIN
+  sentence := Read("Enter a sentence: ")
+
+  FOR each character IN sentence
+    numCharacters := numCharacters + 1
+
+    IF character IS A VOWEL THEN
+      numVowels := numVowels + 1
+    END_IF
+
+    IF character IS A SPACE THEN
+      IF numCharacters > 1 THEN
+        numWords := numWords + 1
+      END_IF
+      numCharacters := 0
+    END_IF
+  END_FOR
+
+  numWords := numWords + 1  
+  numCharacters := numCharacters - 1  
+
+  WRITE "Number of words: ", numWords
+  WRITE "Number of vowels: ", numVowels
+
+END
